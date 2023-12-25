@@ -1,0 +1,25 @@
+
+.navegacion{
+  display: none;
+}
+@media (min-width: 600px) {
+    .navegacion {
+      display: flex;
+      margin-right: 30px;
+      text-decoration: none;
+      font-size: 14px;
+      color: #cfcece;
+    }
+    .navegacion:last-of-type{
+      margin-right: 0;
+    }
+    .navegacion:hover{
+      color: white;
+    }
+    .active{
+      color: white;
+    }
+    .sidenav{
+      display: none;
+    }
+}

@@ -1,3 +1,53 @@
-<p>layout-page works!</p>
-<router-outlet></router-outlet>
-<h5>footer</h5>
+
+  <mat-sidenav-container fullscreen >
+
+    <mat-sidenav #sidenav>
+
+      <mat-toolbar color="primary">
+        <span>Menú</span>
+        <span class="spacer"></span>
+        <button mat-icon-button (click)="sidenav.toggle()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-toolbar>
+
+      <mat-nav-list>
+        <mat-list-item
+          *ngFor="let item of sidebarItems"
+          [routerLink]="item.url"
+          (click)="sidenav.toggle()"
+        >
+        <mat-icon matListItemIcon >{{ item.icon }}</mat-icon>
+        {{ item.label }}
+        </mat-list-item>
+      </mat-nav-list>
+
+    </mat-sidenav>
+
+    <mat-toolbar color="primary" class="md:px-5">
+      <button class="sidenav" mat-icon-button (click)="sidenav.toggle()">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <a class="navegacion" *ngFor="let item of sidebarItems"
+          [routerLink]="item.url" [routerLinkActive]="'active'">
+        {{ item.label }}
+      </a>
+      <span class="spacer"></span>
+      <button mat-button [ngStyle]="{ color:'#cfcece'}">
+        Logout
+      </button>
+    </mat-toolbar>
+
+    <div class="container">
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-sidenav-container>
+
+
+
+
+
+
+
+
