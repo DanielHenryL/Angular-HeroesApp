@@ -12,7 +12,7 @@ export class HeroesService {
   constructor(private httpClient: HttpClient) { }
 
   getHeroes():Observable<Hero[]>{
-    return this.httpClient.get<Hero[]>( `${ this.baseUrl }/api/heroes`)
+    return this.httpClient.get<Hero[]>( `${ this.baseUrl }/api/heroes?limit=30`)
   }
 
   getHeroById( slug:string ):Observable<Hero|undefined>{
@@ -23,7 +23,7 @@ export class HeroesService {
   }
 
   getSuggestions( query:string ):Observable<Hero[]>{
-    return this.httpClient.get<Hero[]>('')
+    return this.httpClient.get<Hero[]>(`${ this.baseUrl }/api/heroes?query=${query}&limit=5`)
   }
 
 }
