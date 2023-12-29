@@ -20,7 +20,7 @@ const routes: Routes = [
         component: SearchPageComponent
       },
       {
-        path:'edit/:id',
+        path:'edit/:slug',
         component: NewPageComponent
       },
       {
@@ -28,7 +28,7 @@ const routes: Routes = [
         component: ListPageComponent
       },
       {
-        path:':id',
+        path:':slug',
         component: HeroPageComponent
       },
       {

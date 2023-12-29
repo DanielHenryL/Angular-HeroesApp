@@ -1,1 +1,50 @@
-<p>hero-page works!</p>
+<ng-template #loading>
+  <mat-grid-list cols="1" rowHeight="400px">
+    <mat-grid-tile >
+      <div class="flex flex-column text-center gap-2">
+        <mat-spinner></mat-spinner>
+        <span class="text-xl">Cargando</span>
+      </div>
+    </mat-grid-tile>
+  </mat-grid-list>
+</ng-template>
+<div *ngIf="hero; else loading" class="grid py-2">
+  <div class="col-12 md:col-8 xl:col-6">
+    <img class="image-hero" [src]="hero|heroImage" [alt]="hero.superhero">
+  </div>
+  <div class="col-12 md:col-4 xl:col-6">
+    <h1 >{{'Información'| uppercase}}</h1>
+    <h2>Nombre Super Heroe</h2>
+    <strong>{{ hero.superhero }}</strong>
+    <h2 >Nombre Real</h2>
+    <strong>{{ hero.alter_ego }}</strong>
+    <h2>Primera aparición</h2>
+    <strong>{{ hero.first_appearance }}</strong>
+    <h2>Caracteristicas</h2>
+    <strong>{{ hero.characters }}</strong>
+    <h2>Editor</h2>
+    <strong>{{ hero.publisher }}</strong>
+    <button mat-raised-button color="accent" class="mt-4" (click)="goBack()">
+      Regresar
+    </button>
+  </div>
+</div>
+
+<!-- <mat-card-header>
+  <div class="col-12 md:col-6">
+    <img [src]="hero|heroImage" [alt]="hero.superhero">
+  </div>
+  <div class="col-12 md:col-6">
+    <mat-card-title>{{'Información'| uppercase}}</mat-card-title>
+    <mat-card-title>Nombre Real</mat-card-title>
+    <mat-card-subtitle>{{ hero.alter_ego }}</mat-card-subtitle>
+    <mat-card-title>Nombre Super Heroe</mat-card-title>
+    <mat-card-subtitle>{{ hero.superhero }}</mat-card-subtitle>
+    <mat-card-title>Primera aparición</mat-card-title>
+    <mat-card-subtitle>{{ hero.first_appearance }}</mat-card-subtitle>
+    <mat-card-title>Caracteristicas</mat-card-title>
+    <mat-card-subtitle>{{ hero.characters }}</mat-card-subtitle>
+    <mat-card-title>Editor</mat-card-title>
+    <mat-card-subtitle>{{ hero.publisher }}</mat-card-subtitle>
+  </div>
+</mat-card-header> -->
