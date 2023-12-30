@@ -19,7 +19,7 @@ export class SearchPageComponent {
     const value:string = this.searchInput.value || '';
     if( value.length === 0 ) return this.heroes = [];
     return this.heroesService.getSuggestions( value )
-        .subscribe( hero => this.heroes = hero );
+        .subscribe( ({heroes}) => this.heroes = heroes );
 
   }
 
