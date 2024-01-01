@@ -26,4 +26,15 @@ export class HeroesService {
     return this.httpClient.get<CountAndHero>(`${ this.baseUrl }/api/heroes?query=${query}&limit=20`)
   }
 
+  addHero( hero:Hero ):Observable<Hero>{
+    return this.httpClient.post<Hero>(`${ this.baseUrl }/api/heroes`, hero);
+  }
+
+  updateHero( hero:Hero ):Observable<Hero>{
+    return this.httpClient.patch<Hero>(`${ this.baseUrl }/api/heroes/${ hero.slug }`, hero);
+  }
+
+  deleteHero( slug:string ):Observable<Hero>{
+    return this.httpClient.delete<Hero>(`${ this.baseUrl }/api/heroes/${ slug }`);
+  }
 }

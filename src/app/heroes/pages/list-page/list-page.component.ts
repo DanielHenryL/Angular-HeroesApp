@@ -22,7 +22,7 @@ export class ListPageComponent implements OnInit{
     this.getHeroesPagination( this.pageLimit, this.pageOffSet )
   }
 
-  getHeroesPagination( limit:number, offset:number ){
+  private getHeroesPagination( limit:number, offset:number ){
     return this.heroesService.getHeroes( limit, offset)
     .subscribe( response => {
       this.heroes = response.heroes
