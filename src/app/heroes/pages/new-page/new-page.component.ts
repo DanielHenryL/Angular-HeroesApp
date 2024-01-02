@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Publisher } from '../../interfaces/hero.interface';
+import { Hero, Publisher } from '../../interfaces/hero.interface';
+import { HeroesService } from '../../services/heroes.service';
 
 @Component({
   selector: 'app-new-page',
@@ -8,6 +9,7 @@ import { Publisher } from '../../interfaces/hero.interface';
   styles: ``
 })
 export class NewPageComponent {
+
 
   public heroForm = new FormGroup({
     slug: new FormControl<string>('', {nonNullable:true}),
@@ -24,10 +26,26 @@ export class NewPageComponent {
     { id:'Marvel Comics' , desc:'Marvel - Comics'},
   ]
 
+  constructor( private heroesService:HeroesService){}
+
+  get currentHero():Hero{
+    const hero = this.heroForm.value as Hero;// hacer que la respuesta sea de tipo Hero
+    return hero
+  }
+
   onSubmit():void{
-    console.log( {
-      formIsValid: this.heroForm.valid,
-      value: this.heroForm.value
-    } );
+    if( !this.heroForm.valid) return;
+
+    if ( this.currentHero.slug ) {
+      this.heroesService.updateHero( this.currentHero )
+          .subscribe(  hero => {
+            // Todo: mostrar snackbar
+          });
+        return;
+    }
+    this.heroesService.addHero( this.currentHero )
+        .subscribe( hero => {
+          // todo: mostrar snackbar, y navegar a /heroes/edit/hero.slug
+        });
   }
 }
