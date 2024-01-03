@@ -2,9 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { switchMap } from 'rxjs';
+import { MatDialog } from '@angular/material/dialog';
+import { filter, switchMap } from 'rxjs';
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
+import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
 
 @Component({
   selector: 'app-new-page',
@@ -32,7 +34,8 @@ export class NewPageComponent implements OnInit {
     private heroesService:HeroesService,
     private activatedRoute:ActivatedRoute,
     private router:Router,
-    private _snackbar:MatSnackBar
+    private _snackbar:MatSnackBar,
+    private dialog: MatDialog
   ){}
 
   ngOnInit(): void {
@@ -75,6 +78,24 @@ export class NewPageComponent implements OnInit {
     this._snackbar.open( message, 'Cerrar', {
       duration:2500,
       panelClass:snackBarClass,
+      horizontalPosition:'end'
+    })
+  }
+
+  onDeleteHero(comienzoDialog:string, finDialog:string ):void{
+    this.dialog.open(ConfirmDialogComponent, {
+      data: this.heroForm.value,
+      width:'450px',
+      enterAnimationDuration:comienzoDialog,
+      exitAnimationDuration:finDialog
+    }).afterClosed()
+      .pipe(
+        filter( (result:boolean) => result),// si es true passa al switchMap
+        switchMap( () => this.heroesService.deleteHero( this.currentHero.slug ))
+      )
+      .subscribe( hero => {
+        this.router.navigate(['/heroes/list'])
+        this.showSnackBar(`${ hero.superhero } eliminado exitosamente`, 'deleteClass')
     })
   }
 }

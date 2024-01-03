@@ -24,7 +24,12 @@ mat-sidenav {
   &.updateClass {
     --mdc-snackbar-container-color: #f09f25;
     --mat-mdc-snack-bar-button-color: #fff;
-    --mdc-snackbar-supporting-text-color: #303030;
+    --mdc-snackbar-supporting-text-color: #fff;
+  }
+  &.deleteClass {
+    --mdc-snackbar-container-color: #f54c4c;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #fff;
   }
 }
 /* .succesful{

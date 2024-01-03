@@ -62,7 +62,7 @@
           </mat-form-field>
         </form>
         <div class="flex justify-content-between">
-          <button *ngIf="currentHero.slug" mat-flat-button color="primary">
+          <button (click)="onDeleteHero('0ms','300ms')" *ngIf="currentHero.slug" mat-flat-button color="primary">
             <mat-icon>delete</mat-icon>
             Borrar
           </button>
