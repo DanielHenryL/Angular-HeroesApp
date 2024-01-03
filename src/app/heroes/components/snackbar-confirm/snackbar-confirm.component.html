@@ -1,1 +1,4 @@
-<p>snackbar-confirm works!</p>
+<span matSnackBarActions class="baseStyle" [class]="data.styleClass">
+  <span  matSnackBarLabel >{{data.message}}</span>
+  <button mat-button matSnackBarAction (click)="snackBarRef.dismissWithAction()">Hecho</button>
+</span>

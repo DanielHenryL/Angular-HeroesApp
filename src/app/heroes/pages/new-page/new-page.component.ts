@@ -7,6 +7,7 @@ import { filter, switchMap } from 'rxjs';
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
 import { ConfirmDialogComponent } from '../../components/confirm-dialog/confirm-dialog.component';
+import { SnackbarConfirmComponent } from '../../components/snackbar-confirm/snackbar-confirm.component';
 
 @Component({
   selector: 'app-new-page',
@@ -75,10 +76,14 @@ export class NewPageComponent implements OnInit {
   }
 
   showSnackBar( message: string, snackBarClass:string="doneClass"):void{
-    this._snackbar.open( message, 'Cerrar', {
-      duration:2500,
-      panelClass:snackBarClass,
-      horizontalPosition:'end'
+    this._snackbar.openFromComponent( SnackbarConfirmComponent, {
+      data:{
+        message,
+        hero:this.heroForm.value,
+        styleClass:snackBarClass
+      },
+      horizontalPosition:'end',
+      duration:2000,
     })
   }
 

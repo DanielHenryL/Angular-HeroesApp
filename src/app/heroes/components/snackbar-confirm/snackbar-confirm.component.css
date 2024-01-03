@@ -1,0 +1,18 @@
+.baseStyle {
+  border-radius: 4px;
+  --mat-snack-bar-button-color: white;
+  --mdc-snackbar-supporting-text-color:white;
+}
+
+.updateClass{
+  background-color: #2196f3 ;
+}
+.createClass{
+  background-color: #6dd37b;
+}
+.deleteClass{
+  background-color: #f54c4c;
+}
+.doneClass{
+  background-color: #f09f25;
+}

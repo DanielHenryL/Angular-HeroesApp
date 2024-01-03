@@ -23,6 +23,7 @@ export class SearchPageComponent {
 
   }
 
+  // cuando seleccionemos un valor del autocomplete
   onSelectedOption( { option }:MatAutocompleteSelectedEvent ):void {
     const hero:Hero = option.value;
     if ( !hero) {

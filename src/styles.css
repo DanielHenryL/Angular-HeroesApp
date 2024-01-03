@@ -10,27 +10,17 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow-x:
 mat-sidenav {
   width: 250px;
 }
+
 .mat-mdc-snack-bar-container {
-  &.doneClass {
+  .mdc-snackbar__surface{
+    padding-right: 0;
+  }
+  /* &.doneClass {
     --mdc-snackbar-container-color: #2196f3;
     --mat-mdc-snack-bar-button-color: #fff;
     --mdc-snackbar-supporting-text-color: #303030;
-  }
-  &.createClass {
-    --mdc-snackbar-container-color: #6dd37b;
-    --mat-mdc-snack-bar-button-color: #fff;
-    --mdc-snackbar-supporting-text-color: #303030;
-  }
-  &.updateClass {
-    --mdc-snackbar-container-color: #f09f25;
-    --mat-mdc-snack-bar-button-color: #fff;
-    --mdc-snackbar-supporting-text-color: #fff;
-  }
-  &.deleteClass {
-    --mdc-snackbar-container-color: #f54c4c;
-    --mat-mdc-snack-bar-button-color: #fff;
-    --mdc-snackbar-supporting-text-color: #fff;
-  }
+  } */
+
 }
 /* .succesful{
   background-color: rgb(0, 250, 187);

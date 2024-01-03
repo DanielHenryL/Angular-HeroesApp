@@ -68,7 +68,7 @@
           </button>
           <button mat-flat-button color="accent" (click)="onSubmit()">
             <mat-icon>save</mat-icon>
-            Guardar
+            {{ currentHero.slug ? 'Actualizar':'Guardar' }}
           </button>
         </div>
       </mat-card-content>
