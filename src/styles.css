@@ -1,5 +1,6 @@
 /* You can add global styles to this file, and also import other style files */
 
+
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow-x: hidden; }
 
@@ -9,3 +10,24 @@ body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; overflow-x:
 mat-sidenav {
   width: 250px;
 }
+.mat-mdc-snack-bar-container {
+  &.doneClass {
+    --mdc-snackbar-container-color: #2196f3;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #303030;
+  }
+  &.createClass {
+    --mdc-snackbar-container-color: #6dd37b;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #303030;
+  }
+  &.updateClass {
+    --mdc-snackbar-container-color: #f09f25;
+    --mat-mdc-snack-bar-button-color: #fff;
+    --mdc-snackbar-supporting-text-color: #303030;
+  }
+}
+/* .succesful{
+  background-color: rgb(0, 250, 187);
+  color:hotpink;
+} */

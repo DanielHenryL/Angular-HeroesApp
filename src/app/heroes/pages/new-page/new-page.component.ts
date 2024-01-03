@@ -1,14 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { ActivatedRoute, Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
+import { switchMap } from 'rxjs';
 import { Hero, Publisher } from '../../interfaces/hero.interface';
 import { HeroesService } from '../../services/heroes.service';
-import { ActivatedRoute, Router } from '@angular/router';
-import { switchMap } from 'rxjs';
 
 @Component({
   selector: 'app-new-page',
   templateUrl: './new-page.component.html',
-  styles: ``
 })
 export class NewPageComponent implements OnInit {
 
@@ -31,7 +31,8 @@ export class NewPageComponent implements OnInit {
   constructor(
     private heroesService:HeroesService,
     private activatedRoute:ActivatedRoute,
-    private router:Router
+    private router:Router,
+    private _snackbar:MatSnackBar
   ){}
 
   ngOnInit(): void {
@@ -59,13 +60,21 @@ export class NewPageComponent implements OnInit {
     if( this.currentHero.slug ) {
       this.heroesService.updateHero( this.currentHero )
           .subscribe(  hero => {
-            // Todo: mostrar snackbar
+            this.showSnackBar(`${ hero.superhero } actualizado!`, "updateClass")
           });
     }else{
       this.heroesService.addHero( this.currentHero )
           .subscribe( hero => {
-            // todo: mostrar snackbar, y navegar a /heroes/edit/hero.slug
+            this.router.navigate(['/heroes/edit', hero.slug])
+            this.showSnackBar(`${ hero.superhero } creado!`, "createClass")
           });
     }
+  }
+
+  showSnackBar( message: string, snackBarClass:string="doneClass"):void{
+    this._snackbar.open( message, 'Cerrar', {
+      duration:2500,
+      panelClass:snackBarClass,
+    })
   }
 }

@@ -26,10 +26,10 @@ import { HeroImagePipe } from './pipe/hero-image.pipe';
     HeroImagePipe
   ],
   imports: [
+    MaterialModule,
     CommonModule,
     ReactiveFormsModule,
     HeroesRoutingModule,
-    MaterialModule
   ],
 })
 export class HeroesModule { }
