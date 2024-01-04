@@ -1,14 +1,16 @@
 <div class="flex flex-column">
   <span class="text-xl mb-4 text-center text-white">Login</span>
-  <mat-form-field appearance="outline" color="accent">
-    <mat-label>Email</mat-label>
-    <input type="email" matInput>
-  </mat-form-field>
-  <mat-form-field appearance="outline" color="accent">
-    <mat-label>Contraseña</mat-label>
-    <input type="password" matInput>
-  </mat-form-field>
-  <button mat-button mat-flat-button color="primary">
+  <form [formGroup]="userForm" class="flex flex-column">
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>Email</mat-label>
+      <input type="email" matInput formControlName="email">
+    </mat-form-field>
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>Contraseña</mat-label>
+      <input type="password" matInput formControlName="password">
+    </mat-form-field>
+  </form>
+  <button mat-button mat-flat-button (click)="onLogin()" color="primary">
     <mat-icon>check</mat-icon>
     Ingresar
   </button>

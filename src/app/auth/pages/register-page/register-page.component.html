@@ -1,18 +1,20 @@
 <div class="flex flex-column">
   <span class="text-xl mb-4 text-center text-white">Registrarse</span>
-  <mat-form-field appearance="outline" color="accent">
-    <mat-label>Usuario</mat-label>
-    <input type="text" matInput>
-  </mat-form-field>
-  <mat-form-field appearance="outline" color="accent">
-    <mat-label>Correo</mat-label>
-    <input type="email" matInput>
-  </mat-form-field>
-  <mat-form-field appearance="outline" color="accent">
-    <mat-label>Contraseña</mat-label>
-    <input type="password" matInput>
-  </mat-form-field>
-  <button mat-button mat-flat-button color="primary">
+  <form (ngSubmit)="onSubmit()"  [formGroup]="userForm" class="flex flex-column">
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>Usuario</mat-label>
+      <input required type="text" matInput formControlName="user">
+    </mat-form-field>
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>Correo</mat-label>
+      <input required type="email" matInput formControlName="email">
+    </mat-form-field>
+    <mat-form-field appearance="outline" color="accent">
+      <mat-label>Contraseña</mat-label>
+      <input required type="password" matInput formControlName="password">
+    </mat-form-field>
+  </form>
+  <button mat-button mat-flat-button (click)="onSubmit()" color="primary">
     <mat-icon>save</mat-icon>
     Crear cuenta
   </button>
