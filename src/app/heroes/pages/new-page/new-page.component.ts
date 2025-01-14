@@ -48,7 +48,7 @@ export class NewPageComponent implements OnInit {
     )
     .subscribe( hero =>{
       if( !hero ) return this.router.navigateByUrl('/')
-
+      console.log( hero );
       return this.heroForm.reset(hero);
     })
   }

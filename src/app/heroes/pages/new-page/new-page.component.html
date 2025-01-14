@@ -4,9 +4,9 @@
 </h1>
 <mat-divider class="mb-2"></mat-divider>
 
-<div class="grid">
+<div class="grid min-h-full">
 
-  <div class="md:col-6 col-12">
+  <div class="md:col-6 col-12 min-h-0">
     <mat-card>
       <mat-card-content>
         <form class="grid" [formGroup]="heroForm" (ngSubmit)="onSubmit()" >
@@ -52,14 +52,14 @@
               </mat-option>
             </mat-select>
           </mat-form-field>
-          <mat-form-field appearance="outline" color="accent" class="col-12">
-            <mat-label>Alternative Image</mat-label>
-            <input
-              matInput
-              type="text"
-              formControlName="alt_img"
-            >
-          </mat-form-field>
+            <mat-form-field appearance="outline" color="accent" class="col-12 sm:col-8">
+              <mat-label>Alternative Image URL</mat-label>
+              <input
+                matInput
+                type="text"
+                formControlName="alt_img"
+              >
+            </mat-form-field>
         </form>
         <div class="flex justify-content-between">
           <button (click)="onDeleteHero('0ms','300ms')" *ngIf="currentHero.slug" mat-flat-button color="primary">

@@ -27,6 +27,7 @@ export class ListPageComponent implements OnInit{
     .subscribe( response => {
       this.heroes = response.heroes
       this.total = response.total
+      console.log( response );
     });
   }
 

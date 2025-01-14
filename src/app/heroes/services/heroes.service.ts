@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { Observable, catchError, of, tap } from 'rxjs';
+import { Observable, catchError, map, of, tap } from 'rxjs';
 import { CountAndHero, Hero } from '../interfaces/hero.interface';
 import { environments } from '../../../environments/environments';
 
@@ -18,6 +18,10 @@ export class HeroesService {
   getHeroById( slug:string ):Observable<Hero|undefined>{
     return this.httpClient.get<Hero>(`${ this.baseUrl }/api/heroes/${ slug }`)
       .pipe(
+        map( hero => {
+            hero.alt_img = hero.alt_img ? hero.alt_img : hero.slug
+           return hero
+        } ),
         catchError( error => of( undefined )),
       )
   }

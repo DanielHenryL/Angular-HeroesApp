@@ -37,7 +37,5 @@ export const canMatchGuard: CanMatchFn = (
   route: Route,
   segments: UrlSegment[]
 ) => {
-  console.log('CanMatch');
-  console.log({ route, segments });
   return checkAuthStatus();
 }
